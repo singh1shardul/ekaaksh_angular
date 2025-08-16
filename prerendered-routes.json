@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "/accounts/login": {},
+    "/accounts/register": {},
+    "/patient": {},
+    "/patient/portal": {},
+    "/patient/profile": {},
+    "/patient/profile-details": {}
+  }
+}
