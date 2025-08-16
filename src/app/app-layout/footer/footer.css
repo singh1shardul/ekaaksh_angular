@@ -1,0 +1,38 @@
+  .footer {
+    background: #1a1a2e;
+    color: #f6f6f6;
+  }
+
+  .footer-link {
+    color: #ffd700;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover {
+    color: #00c3ff;
+  }
+
+  .footer-title {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .microfooter {
+    background: #27293d;
+    color: #ffffff;
+    font-size: 0.95rem;
+    border-top: 1px solid #444;
+  }
+
+  .footer ul {
+    padding-left: 1em;
+  }
+
+  .footer ul li {
+    margin-bottom: 0.5em;
+  }
+
+  .footer i {
+    vertical-align: middle;
+  }

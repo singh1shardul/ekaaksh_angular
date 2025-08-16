@@ -1,0 +1,31 @@
+<div class="chat-container">
+  <div class="messages" #scrollArea>
+    <div *ngFor="let msg of messages"
+         class="message"
+         [class.user]="msg.sender === 'user'"
+         [class.ai]="msg.sender === 'ai'"
+         [class.doctor]="msg.sender === 'doctor'">
+      <div class="bubble">
+        <div class="meta" *ngIf="msg.sender !== 'user'">
+          <span class="name">{{ msg.sender === 'ai' ? 'Ekaaksh AI' : participantName }}</span>
+          <span class="dot">•</span>
+          <span class="time">{{ msg.timestamp | date:'shortTime' }}</span>
+        </div>
+        <div class="meta meta-right" *ngIf="msg.sender === 'user'">
+          <span class="time">{{ msg.timestamp | date:'shortTime' }}</span>
+        </div>
+        <p class="text">{{ msg.text }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-bar">
+    <input [(ngModel)]="newMessage"
+           type="text"
+           placeholder="Type a message…"
+           (keyup.enter)="onSend()">
+    <button type="button" (click)="onSend()" aria-label="Send message">
+      Send
+    </button>
+  </div>
+</div>

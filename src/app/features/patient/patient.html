@@ -1,0 +1,22 @@
+<!-- Header with Profile Dropdown -->
+<header class="portal-header shadow-sm">
+    <div class="logo">
+        <h1 class="brand">Ekaaksh <span>Healthcare+</span></h1>
+    </div>
+
+    <div class="profile-dropdown" (click)="toggleDropdown()" tabindex="0">
+        <img src="assets/images/shadow-user.png" width="" alt="Profile" class="profile-avatar" />
+        <span class="profile-name">Hello, John</span>
+        <i class="bi bi-caret-down-fill ms-1"></i>
+
+        <ul class="dropdown-menu shadow rounded" [class.show]="isDropdownOpen">
+            <li><a routerLink="/patient/profile-details" class="dropdown-item">
+                    <i class="bi bi-person-circle me-2"></i> Profile Setup
+                </a></li>
+            <li><button (click)="logout()" class="dropdown-item btn-logout">
+                    <i class="bi bi-box-arrow-right me-2"></i> Logout
+                </button></li>
+        </ul>
+    </div>
+</header>
+<router-outlet></router-outlet>

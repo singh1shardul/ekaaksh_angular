@@ -1,0 +1,96 @@
+/* === Global Reset === */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove default body spacing & set theme */
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f9f9f9;   /* Default project background */
+  color: #333;                 /* Default text color */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remove underlines from links */
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Make buttons consistent */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Inputs & textareas reset */
+input, textarea, select {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* Remove list bullets */
+ul, ol {
+  list-style: none;
+}
+
+/* Images responsive by default */
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  display: block;
+}
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8f9fa;
+  --contrast-bg: #121212;
+
+  --primary-text: #212529;
+  --secondary-text: #6c757d;
+
+  --accent-color: #0d6efd;
+}
+
+[data-theme="dark"] {
+  --primary-bg: #121212;
+  --secondary-bg: #1e1e1e;
+  --contrast-bg: #f8f9fa;
+
+  --primary-text: #f5f5f5;
+  --secondary-text: #b0b0b0;
+
+  --accent-color: #4dabf7;
+}
+
+/* Utility classes replacing Bootstrap’s bg/text colors */
+.bg-primary-theme {
+  background-color: var(--primary-bg) !important;
+}
+.bg-secondary-theme {
+  background-color: var(--secondary-bg) !important;
+}
+.bg-contrast-theme {
+  background-color: var(--contrast-bg) !important;
+}
+
+.text-primary-theme {
+  color: var(--primary-text) !important;
+}
+.text-secondary-theme {
+  color: var(--secondary-text) !important;
+}
+.text-accent-theme {
+  color: var(--accent-color) !important;
+}

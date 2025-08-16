@@ -1,0 +1,65 @@
+<!-- Patient Portal Page -->
+<div class="patient-portal-wrapper">
+
+  <main class="portal-main container py-5">
+    <!-- Start New Consultation Card -->
+    <section class="start-consultation mb-5" data-aos="zoom-in">
+      <div class="card start-card glass-card p-4 d-flex flex-column flex-md-row align-items-center justify-content-between">
+        <div class="new-consult-content">
+          <h2 class="fw-bold">Start a New Consultation</h2>
+          <p>Quickly consult with our expert physicians through AI-powered telemedicine.</p>
+          <button class="btn btn-light btn-lg mt-2" (click)="startNewConsultation()">
+            New Consultation <i class="bi bi-arrow-right-circle ms-2"></i>
+          </button>
+        </div>
+        <img src="assets/images/new-consultation.png" alt="New Consultation" class="new-consult-img" />
+      </div>
+    </section>
+
+    <!-- Ongoing Consultations -->
+    <section class="ongoing-consultations mb-5" data-aos="fade-up">
+      <h3 class="section-title"><i class="bi bi-activity me-2"></i> Ongoing Consultations</h3>
+      <div class="card-grid">
+        <ng-container *ngIf="ongoingConsultations.length; else noOngoing">
+          <div *ngFor="let consult of ongoingConsultations" 
+               class="card consultation-card glass-card">
+            <div>
+              <h5>{{ consult.doctorName }}</h5>
+              <p class="specialty">{{ consult.specialty }}</p>
+              <small>{{ consult.date | date: 'medium' }}</small>
+            </div>
+            <button class="btn btn-outline-dark" (click)="openConsultation(consult.id)">
+              Continue
+            </button>
+          </div>
+        </ng-container>
+        <ng-template #noOngoing>
+          <p class="empty-state">You have no ongoing consultations.</p>
+        </ng-template>
+      </div>
+    </section>
+
+    <!-- Past Consultations -->
+    <section class="past-consultations" data-aos="fade-up" data-aos-delay="150">
+      <h3 class="section-title"><i class="bi bi-clock-history me-2"></i> Past Consultations</h3>
+      <div class="row g-4">
+        <ng-container *ngIf="pastConsultations.length; else noPast">
+          <div *ngFor="let consult of pastConsultations" class="col-12 col-md-6 col-lg-4">
+            <div class="card past-consult-card glass-card">
+              <h5>{{ consult.doctorName }}</h5>
+              <p class="specialty">{{ consult.specialty }}</p>
+              <small>{{ consult.date | date: 'mediumDate' }}</small>
+              <p class="summary">{{ consult.summary | slice:0:100 }}...</p>
+              <button class="btn btn-outline-dark w-100" (click)="viewDetails(consult.id)">
+                View Details
+              </button>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noPast>
+          <p class="empty-state">You have no past consultations.</p>
+        </ng-template>
+      </div>
+    </section>
+  </main>
+</div>

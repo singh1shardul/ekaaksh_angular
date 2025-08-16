@@ -1,0 +1,58 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <!-- Progress Indicator -->
+    <div class="progress-bar">
+      <div class="step" [class.active]="step >= 1">1</div>
+      <div class="line" [class.active]="step > 1"></div>
+      <div class="step" [class.active]="step >= 2">2</div>
+      <div class="line" [class.active]="step > 2"></div>
+      <div class="step" [class.active]="step >= 3">3</div>
+    </div>
+
+    <h2>Profile Setup</h2>
+
+    <!-- Step 1 -->
+    <div *ngIf="step === 1" class="form-step animate">
+      <label>Full Name</label>
+      <input type="text" [(ngModel)]="profileData.fullName" placeholder="Enter your full name">
+
+      <label>Email</label>
+      <input type="email" [(ngModel)]="profileData.email" placeholder="Enter your email">
+
+      <button class="next-btn" (click)="nextStep()">Next</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div *ngIf="step === 2" class="form-step animate">
+      <label>Age</label>
+      <input type="number" [(ngModel)]="profileData.age" placeholder="Enter your age">
+
+      <label>Gender</label>
+      <select [(ngModel)]="profileData.gender">
+        <option value="" disabled selected>Select</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <div class="btn-group">
+        <button class="back-btn" (click)="prevStep()">Back</button>
+        <button class="next-btn" (click)="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div *ngIf="step === 3" class="form-step animate">
+      <label>Phone Number</label>
+      <input type="text" [(ngModel)]="profileData.phone" placeholder="Enter phone number">
+
+      <label>Address</label>
+      <textarea [(ngModel)]="profileData.address" placeholder="Enter your address"></textarea>
+
+      <div class="btn-group">
+        <button class="back-btn" (click)="prevStep()">Back</button>
+        <button class="submit-btn" (click)="submitProfile()">Finish</button>
+      </div>
+    </div>
+  </div>
+</div>

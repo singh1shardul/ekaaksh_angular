@@ -1,0 +1,37 @@
+.loader-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(255,255,255,0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.loader-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadein 0.8s;
+}
+
+@keyframes rotate {
+  0% { stroke-dashoffset: 201; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.loader-spinner svg .animated {
+  stroke-dasharray: 201;
+  stroke-dashoffset: 201;
+  animation: rotate 1.4s linear infinite;
+}
+
+.loader-text {
+  margin-top: 16px;
+  font-size: 1.2rem;
+  color: #2ec4b6;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}

@@ -1,0 +1,185 @@
+/* Wrapper uses theme variables like login */
+.signup-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-bg);
+  overflow: hidden;
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--primary-text);
+}
+
+/* Floating circles same as login */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #00c6ff, #00c6ff);
+  opacity: 0.2;
+  animation: float 10s infinite ease-in-out alternate;
+}
+.circle-1 {
+  width: 200px; height: 200px; top: -50px; left: -50px;
+}
+.circle-2 {
+  width: 150px; height: 150px; bottom: -50px; right: 20%;
+}
+.circle-3 {
+  width: 120px; height: 120px; bottom: 10%; left: 10%;
+}
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
+}
+
+/* Glassmorphism Card */
+.signup-card {
+  display: flex;
+  width: 760px;
+  max-width: 75%;
+  background: var(--secondary-bg);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  color: var(--primary-text);
+}
+
+/* Card left panel */
+.card-left {
+  flex: 1;
+  background: linear-gradient(135deg, var(--accent-color), #00c6ff);
+  color: #fff;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-left h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.card-left p {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* Card right panel */
+.card-right {
+  flex: 1;
+  background: var(--primary-bg);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--primary-text);
+}
+
+.card-right h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: var(--primary-text);
+}
+
+/* Inputs */
+.card-right form .form-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input-theme {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--secondary-text);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-theme:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px rgba(13,110,253,0.3);
+}
+
+/* Toggle btn */
+.card-right form .toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  border: none;
+  background: none;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: var(--primary-text);
+}
+
+.btn.primary {
+  background: var(--accent-color);
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #0056b3;
+}
+
+/* Signup link */
+.signup {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+}
+
+.signup a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.signup a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .signup-card {
+    flex-direction: column;
+  }
+
+  .card-left {
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .card-left h1 {
+    font-size: 2rem;
+  }
+
+  .card-left p {
+    font-size: 1rem;
+  }
+
+  .card-right {
+    padding: 30px 20px;
+  }
+}

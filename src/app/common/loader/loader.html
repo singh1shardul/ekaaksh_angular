@@ -1,0 +1,12 @@
+<div class="loader-overlay" *ngIf="isLoading | async">
+    <div class="loader-spinner">
+        <!-- SVG Animation & Logo -->
+        <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle class="bg" cx="40" cy="40" r="32" stroke="#e0e0e0" stroke-width="8" fill="none" />
+            <circle class="animated" cx="40" cy="40" r="32" stroke="#2ec4b6" stroke-width="8" fill="none"
+                stroke-linecap="round" />
+            <circle class="eye" cx="40" cy="40" r="8" fill="#007bff" />
+        </svg>
+        <div class="loader-text">Loading Ekaaksh Healthcare...</div>
+    </div>
+</div>

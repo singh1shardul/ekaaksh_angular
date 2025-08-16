@@ -1,0 +1,127 @@
+.cover {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+section .container {
+  /* min-height: 100vh; */
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+  height: auto;
+}
+
+.bg-cover-custom {
+  background-image: url('../../assets/images/banner-image-3.png');
+}
+
+.hero-section {
+  color: var(--primary-text) !important;
+  /* background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+  width: 100%;
+  /* min-height: 400px; */
+  margin-top: 70px !important;
+}
+
+.features-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.features-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.feature-card {
+  /* color: #fcffff; */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* .hero-section {
+  background: linear-gradient(to right, #0066cc, #0099ff);
+  color: #fff;
+} */
+.hero-section a.btn {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section a.btn:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.animate-about-img img {
+  transition: transform 0.5s ease;
+}
+
+.animate-about-img img:hover {
+  transform: scale(1.03) rotate(1deg);
+}
+
+#how-it-works {
+  /* background-color: #000000;
+  color: #fcffff; */
+}
+
+.step-card {
+  /* background: #f8f9fa; */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(78, 75, 75, 0.1);
+}
+
+#telemedicine-services {
+  color: var(--primary-text);
+}
+
+.service-card {
+  background: var(--primary-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.animated-underline {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: inherit;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;           /* Adjust distance below text */
+  width: 0;
+  height: 2px;            /* Thickness of underline */
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after,
+.animated-underline:focus::after {
+  width: 100%;
+}

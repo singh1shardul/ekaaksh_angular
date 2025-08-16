@@ -1,0 +1,145 @@
+.consultation-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background: #f9f9f9;
+  border-right: 1px solid #ddd;
+  height: 100%;
+}
+
+.doctor-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.doctor-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.doctor-speciality {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 4px 0 12px 0;
+}
+
+.consultation-id,
+.consultation-date {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  /* ✅ Rounded */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+.consultation-details-container {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  height: 100%;
+}
+
+.details-sidebar {
+  flex: 0 0 280px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.details-sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.details-sidebar .description {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.details-sidebar .meta-info p {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.details-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-nav {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 1rem;
+}
+
+.tab-nav button {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab-nav button.active {
+  background: #007bff;
+  color: #fff;
+}
+
+.tab-content {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .consultation-details-container {
+    flex-direction: column;
+  }
+
+  .details-sidebar {
+    width: 100%;
+  }
+}

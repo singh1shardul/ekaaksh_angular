@@ -1,0 +1,179 @@
+<div class="profile-details-section py-5">
+    <div class="container-xl">
+        <!-- Back Button -->
+        <div class="mb-4">
+            <button class="btn back-btn d-flex align-items-center" [routerLink]="['/patient/portal']">
+                <i class="bi bi-arrow-left me-2"></i> Back to Portal
+            </button>
+        </div>
+
+        <!-- Heading -->
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-accent-theme">Profile Setup</h2>
+            <p class="text-muted">Manage your health details all in one place</p>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs custom-tabs justify-content-center flex-wrap mb-4" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" [class.active]="activeTab === 'basic'" (click)="selectTab('basic')">
+                    <i class="bi bi-person me-1"></i> Basic Details
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" [class.active]="activeTab === 'allergy'" (click)="selectTab('allergy')">
+                    <i class="bi bi-exclamation-triangle me-1"></i> Allergies
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" [class.active]="activeTab === 'medical'" (click)="selectTab('medical')">
+                    <i class="bi bi-folder2-open me-1"></i> Medical History
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" [class.active]="activeTab === 'surgical'" (click)="selectTab('surgical')">
+                    <i class="bi bi-activity me-1"></i> Surgical History
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" [class.active]="activeTab === 'medication'" (click)="selectTab('medication')">
+                    <i class="bi bi-capsule me-1"></i> Medications
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" [class.active]="activeTab === 'vital'" (click)="selectTab('vital')">
+                    <i class="bi bi-heart-pulse me-1"></i> Vital Signs
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tabs Content -->
+        <div class="tab-content bg-white p-4 rounded-4 shadow-lg">
+            <!-- Basic Details -->
+            <div *ngIf="activeTab === 'basic'" class="tab-pane fade show active">
+                <div class="mb-4">
+                    <img src="{{patient.avatarUrl}}" alt="Profile picture" class="profile-avatar-lg mb-3 shadow" />
+                    <button class="btn btn-outline-primary btn-sm" (click)="changeProfilePicture()">
+                        <i class="bi bi-camera me-1"></i> Change Picture
+                    </button>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6"><strong>Name:</strong> {{ patient.name }}</div>
+                    <div class="col-md-6"><strong>Email:</strong> {{ patient.email }}</div>
+                    <div class="col-md-6"><strong>Address:</strong> {{ patient.address }}</div>
+                    <div class="col-md-3"><strong>Gender:</strong> {{ patient.gender }}</div>
+                    <div class="col-md-3"><strong>DOB:</strong> {{ patient.dob | date: 'longDate' }}</div>
+                </div>
+                <button class="btn btn-accent-theme w-100 mt-4" (click)="editBasicDetails()">
+                    <i class="bi bi-pencil me-1"></i> Edit Details
+                </button>
+            </div>
+            <div *ngFor="let allergy of allergies">
+                {{allergy.name}}
+            </div>
+            <!-- Allergies -->
+            <div *ngIf="activeTab === 'allergy'" class="tab-pane fade show" [class.active]="activeTab === 'allergy'">
+                <h4 class="mb-3"><i class="bi bi-exclamation-triangle text-warning me-2"></i>Allergies</h4>
+                <ng-container *ngIf="allergies.length > 0; else noAllergies">
+                    <ul class="list-group modern-list mb-3">
+                        <li *ngFor="let allergy of allergies"
+                            class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ allergy.name }}
+                            <span>
+                                <button class="btn btn-sm btn-outline-secondary me-1" (click)="editAllergy(allergy)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" (click)="deleteAllergy(allergy)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success w-100" (click)="addAllergy()">
+                        <i class="bi bi-plus-circle me-1"></i>Add Allergy
+                    </button>
+                </ng-container>
+
+                <ng-template #noAllergies>
+                    <div class="empty-card text-center p-5 rounded-4">
+                        <i class="bi bi-emoji-neutral text-warning mb-3" style="font-size:2rem"></i>
+                        <p>No allergies added yet. Please add any allergies you have to keep your profile up to date.
+                        </p>
+                        <button class="btn btn-success" (click)="addAllergy()">
+                            <i class="bi bi-plus-circle me-1"></i>Add Allergy
+                        </button>
+                    </div>
+                </ng-template>
+            </div>
+
+            <!-- Medical History -->
+            <div *ngIf="activeTab === 'medical'" class="tab-pane fade show" [class.active]="activeTab === 'medical'">
+                <h4><i class="bi bi-folder2-open text-info me-2"></i>Past Medical History</h4>
+                <ng-container *ngIf="medicalHistory.length > 0; else noMedicalHistory">
+                    <ul class="list-group mb-3">
+                        <li *ngFor="let history of medicalHistory"
+                            class="list-group-item bg-primary-theme d-flex justify-content-between align-items-center">
+                            {{ history.title }}
+                            <span>
+                                <button class="btn btn-sm btn-outline-secondary me-1"
+                                    (click)="editMedicalHistory(history)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" (click)="deleteMedicalHistory(history)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success w-100" (click)="addMedicalHistory()">
+                        <i class="bi bi-plus-circle me-1"></i>Add Medical History
+                    </button>
+                </ng-container>
+                <ng-template #noMedicalHistory>
+                    <div class="empty-card bg-secondary-theme text-center p-4 rounded mb-3">
+                        <i class="bi bi-emoji-neutral text-info mb-2" style="font-size:2rem"></i>
+                        <p>No medical history added yet. You can add conditions you've had.</p>
+                        <button class="btn btn-success" (click)="addMedicalHistory()">
+                            <i class="bi bi-plus-circle me-1"></i>Add Medical History
+                        </button>
+                    </div>
+                </ng-template>
+            </div>
+
+            <!-- Surgical History -->
+             <div *ngIf="activeTab === 'surgical'" class="tab-pane fade show" [class.active]="activeTab === 'surgical'">
+                <h4><i class="bi bi-folder2-open text-info me-2"></i>Past Surgical History</h4>
+                <ng-container *ngIf="surgicalHistory.length > 0; else noSurgicalHistory">
+                    <ul class="list-group mb-3">
+                        <li *ngFor="let history of surgicalHistory"
+                            class="list-group-item bg-primary-theme d-flex justify-content-between align-items-center">
+                            {{ history.title }}
+                            <span>
+                                <button class="btn btn-sm btn-outline-secondary me-1"
+                                    (click)="editMedicalHistory(history)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" (click)="deleteMedicalHistory(history)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success w-100" (click)="addMedicalHistory()">
+                        <i class="bi bi-plus-circle me-1"></i>Add Surgical History
+                    </button>
+                </ng-container>
+                <ng-template #noSurgicalHistory>
+                    <div class="empty-card bg-secondary-theme text-center p-4 rounded mb-3">
+                        <i class="bi bi-emoji-neutral text-info mb-2" style="font-size:2rem"></i>
+                        <p>No surical history added yet. You can add conditions you've had.</p>
+                        <button class="btn btn-success" (click)="addMedicalHistory()">
+                            <i class="bi bi-plus-circle me-1"></i>Add Surgical History
+                        </button>
+                    </div>
+                </ng-template>
+            </div>
+            <!-- Keep other tabs same but they’ll inherit new styling -->
+        </div>
+    </div>
+</div>
